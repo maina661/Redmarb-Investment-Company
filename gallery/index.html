@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            max-width: 800px;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery">
+        <img src="image1.jpg" alt="Image 1">
+        <img src="image2.jpg" alt="Image 2">
+        <img src="image3.jpg" alt="Image 3">
+        <img src="image4.jpg" alt="Image 4">
+    </div>
+    
+    <div class="modal" id="modal">
+        <img id="modalImg" src="" alt="">
+    </div>
+    
+    <script>
+        const images = document.querySelectorAll(".gallery img");
+        const modal = document.getElementById("modal");
+        const modalImg = document.getElementById("modalImg");
+
+        images.forEach(img => {
+            img.addEventListener("click", function() {
+                modal.style.display = "flex";
+                modalImg.src = this.src;
+            });
+        });
+
+        modal.addEventListener("click", function() {
+            modal.style.display = "none";
+        });
+    </script>
+</body>
+</html>
